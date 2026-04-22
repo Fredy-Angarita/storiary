@@ -1,6 +1,9 @@
 import path from 'path';
-import { DataSourceOptions } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 import dotenv from 'dotenv';
+import { GenreEntity } from '../entity/genre.entity';
+import { GroupTypeEntity } from '../entity/group-type.entity';
+import { TitleTypeEntity } from '../entity/title-type.entity';
 dotenv.config();
 export const DataSourceConfig: DataSourceOptions = {
   type: 'postgres',
@@ -11,6 +14,7 @@ export const DataSourceConfig: DataSourceOptions = {
   password: String(process.env.DB_PASSWORD),
   synchronize: false,
   logging: false,
-  entities: [],
+  entities: [GenreEntity, GroupTypeEntity, TitleTypeEntity],
   migrations: [path.join(__dirname, '../migrations/*.{js,ts}')],
 };
+export const dataSourceInstance = new DataSource(DataSourceConfig);
