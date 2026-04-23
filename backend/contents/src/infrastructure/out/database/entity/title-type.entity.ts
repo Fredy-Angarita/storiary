@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { TitleEntity } from './title.entity';
 @Entity('title-type')
 export class TitleTypeEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -13,6 +15,8 @@ export class TitleTypeEntity {
   name: string;
   @Column()
   description: string;
+  @OneToMany(() => TitleEntity, (title) => title.type)
+  title: TitleEntity[];
   @CreateDateColumn()
   create_at: Date;
   @UpdateDateColumn()

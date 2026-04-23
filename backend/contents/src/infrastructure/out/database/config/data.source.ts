@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { GenreEntity } from '../entity/genre.entity';
 import { GroupTypeEntity } from '../entity/group-type.entity';
 import { TitleTypeEntity } from '../entity/title-type.entity';
+import { TitleEntity } from '../entity/title.entity';
 dotenv.config();
 export const DataSourceConfig: DataSourceOptions = {
   type: 'postgres',
@@ -14,7 +15,7 @@ export const DataSourceConfig: DataSourceOptions = {
   password: String(process.env.DB_PASSWORD),
   synchronize: false,
   logging: false,
-  entities: [GenreEntity, GroupTypeEntity, TitleTypeEntity],
+  entities: [GenreEntity, GroupTypeEntity, TitleTypeEntity, TitleEntity],
   migrations: [path.join(__dirname, '../migrations/*.{js,ts}')],
 };
 export const dataSourceInstance = new DataSource(DataSourceConfig);
