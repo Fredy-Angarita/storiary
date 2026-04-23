@@ -6,6 +6,7 @@ import { GroupTypeEntity } from '../entity/group-type.entity';
 import { TitleTypeEntity } from '../entity/title-type.entity';
 import { TitleEntity } from '../entity/title.entity';
 import { GroupEntity } from '../entity/group.entity';
+import { ChapterEntity } from '../entity/chapter.entity';
 dotenv.config();
 export const DataSourceConfig: DataSourceOptions = {
   type: 'postgres',
@@ -22,6 +23,7 @@ export const DataSourceConfig: DataSourceOptions = {
     TitleTypeEntity,
     TitleEntity,
     GroupEntity,
+    ChapterEntity,
   ],
   migrations: [path.join(__dirname, '../migrations/*.{js,ts}')],
 };

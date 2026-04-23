@@ -4,10 +4,12 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { GroupTypeEntity } from './group-type.entity';
 import { TitleEntity } from './title.entity';
+import { ChapterEntity } from './chapter.entity';
 
 @Entity('group')
 export class GroupEntity {
@@ -25,6 +27,8 @@ export class GroupEntity {
   title: TitleEntity;
   @ManyToOne(() => GroupTypeEntity, (type) => type.group)
   type: GroupTypeEntity;
+  @OneToMany(() => ChapterEntity, (chapter) => chapter.group)
+  chapters: ChapterEntity[];
   @CreateDateColumn()
   create_at: Date;
   @DeleteDateColumn()
