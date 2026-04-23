@@ -6,10 +6,12 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { TitleTypeEntity } from './title-type.entity';
 import { GenreEntity } from './genre.entity';
+import { GroupEntity } from './group.entity';
 @Entity('title')
 export class TitleEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -20,6 +22,8 @@ export class TitleEntity {
   description: string;
   @ManyToOne(() => TitleTypeEntity, (type) => type.title)
   type: TitleTypeEntity;
+  @OneToMany(() => GroupEntity, (group) => group.title)
+  group: GroupEntity[];
   @ManyToMany(() => GenreEntity, (genre) => genre.titles)
   @JoinTable({
     name: 'title-genre',
