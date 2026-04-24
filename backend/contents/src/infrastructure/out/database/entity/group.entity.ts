@@ -7,7 +7,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { GroupTypeEntity } from './group-type.entity';
+import { GroupTypeEntity } from './group.type.entity';
 import { TitleEntity } from './title.entity';
 import { ChapterEntity } from './chapter.entity';
 

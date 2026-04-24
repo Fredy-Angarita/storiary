@@ -9,7 +9,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { TitleTypeEntity } from './title-type.entity';
+import { TitleTypeEntity } from './title.type.entity';
 import { GenreEntity } from './genre.entity';
 import { GroupEntity } from './group.entity';
 @Entity('title')
