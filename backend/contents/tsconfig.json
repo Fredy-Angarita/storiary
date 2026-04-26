@@ -23,6 +23,9 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@/*": ["./src/*"],
+      "@spi/*": ["./domain/spi/*"],
+      "@models/*": ["./domain/models/*"],
+      "@repository/*": ["./src/infrastructure/out/database/repository*"]
     }
   }
 }
