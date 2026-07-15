@@ -1,10 +1,14 @@
 import { TitleType } from '@models/title.type.model';
-import { NotFoundException } from '@nestjs/common';
 import { ITitleTypePersistencePort } from '@spi/title.type.persistence.port';
-import { EXCEPTIONS_CONSTANTS } from '../constants/exception.constants';
+import { EXCEPTIONS_CONSTANTS } from '../../constants/exception.constants';
+import { TitleTypeNotFoundException } from '../../exceptions/title.type.not.found.exceptions';
+import { TitleTypeServicePort } from '../title.type.service.port';
 
-export class TitleTypeUseCase {
+export class TitleTypeUseCase implements TitleTypeServicePort {
   constructor(private readonly persistence_port: ITitleTypePersistencePort) {}
+  async getTitleType(): Promise<TitleType[]> {
+    return await this.persistence_port.getTitleTypes();
+  }
 
   async saveTitleType(title: TitleType): Promise<TitleType> {
     return await this.persistence_port.saveTitleType(title);
@@ -20,7 +24,9 @@ export class TitleTypeUseCase {
   async getTitleTypeById(id: string): Promise<TitleType> {
     const type = await this.persistence_port.getTitleById(id);
     if (!type)
-      throw new NotFoundException(EXCEPTIONS_CONSTANTS.NOT_FOUND_TITLE_TYPE);
+      throw new TitleTypeNotFoundException(
+        EXCEPTIONS_CONSTANTS.NOT_FOUND_TITLE_TYPE,
+      );
     return type;
   }
 }

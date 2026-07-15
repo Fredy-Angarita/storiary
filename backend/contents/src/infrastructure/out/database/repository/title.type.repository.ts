@@ -10,15 +10,22 @@ export class TitleTypeRepository {
     @InjectRepository(TitleTypeEntity)
     private readonly repository: Repository<TitleTypeEntity>,
   ) {}
+
+  async getTitleTypes(): Promise<TitleTypeEntity[]> {
+    return await this.repository.find();
+  }
+
   async saveTitleType(titleType: TitleType): Promise<TitleTypeEntity> {
     return await this.repository.save(titleType);
   }
+
   async updateTitleType(
     id: string,
     titleType: Partial<TitleType>,
   ): Promise<void> {
     await this.repository.update(id, titleType);
   }
+
   async getTitleById(id: string): Promise<TitleType | null> {
     return await this.repository.findOneBy({ id: id });
   }
