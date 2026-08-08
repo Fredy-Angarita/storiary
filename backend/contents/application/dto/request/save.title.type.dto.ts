@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateTitleTypeDto {
+export class SaveTitleTypeDto {
   @IsString()
   @IsNotEmpty()
   name: string;

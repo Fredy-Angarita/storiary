@@ -25,7 +25,10 @@
       "@/*": ["./src/*"],
       "@spi/*": ["./domain/spi/*"],
       "@models/*": ["./domain/models/*"],
-      "@repository/*": ["./src/infrastructure/out/database/repository*"]
+      "@repository/*": ["./src/infrastructure/out/database/repository*"],
+      "@dto/*": ["./application/dto/*"],
+      "@handler/*": ["./application/handlers/*"],
     }
-  }
+  },
+  "include": ["src/**/*", "domain/**/*", "application/**/*"],
 }

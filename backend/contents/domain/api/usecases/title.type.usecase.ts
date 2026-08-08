@@ -18,6 +18,8 @@ export class TitleTypeUseCase implements TitleTypeServicePort {
     id: string,
     title_type: Partial<TitleType>,
   ): Promise<void> {
+    const foundTitle = await this.getTitleTypeById(id);
+    if (!foundTitle) return;
     await this.persistence_port.updateTitleType(id, title_type);
   }
 

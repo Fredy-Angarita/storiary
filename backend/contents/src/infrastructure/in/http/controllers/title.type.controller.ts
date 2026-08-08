@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
-import { TitleTypeHandler } from '../../../../../application/handlers/title.type.handler';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { SaveTitleTypeDto } from '@dto/request/save.title.type.dto';
+import { TitleTypeHandler } from '@handler/title.type.handler';
 
 @Controller('title-type')
 export class TitleTypeController {
@@ -8,5 +9,16 @@ export class TitleTypeController {
   @Get()
   async getTitleTypes() {
     return await this.handler.getTitleTypes();
+  }
+  @Put(':id')
+  async updateTitleType(
+    @Param() uuid: string,
+    @Body() updateTitle: Partial<SaveTitleTypeDto>,
+  ) {
+    await this.handler.updateTitleType(uuid, updateTitle);
+  }
+  @Post()
+  async saveTitleType(@Body() saveTitleTypeRequest: SaveTitleTypeDto) {
+    return await this.handler.saveTitleType(saveTitleTypeRequest);
   }
 }
