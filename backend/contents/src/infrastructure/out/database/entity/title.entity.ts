@@ -30,7 +30,7 @@ export class TitleEntity {
   })
   genres: GenreEntity[];
   @CreateDateColumn()
-  create_at: string;
+  create_at: Date;
   @DeleteDateColumn()
-  delete_at: string;
+  delete_at: Date;
 }
